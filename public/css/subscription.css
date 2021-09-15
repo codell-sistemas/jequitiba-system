@@ -1,0 +1,89 @@
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#resumo{
+    overflow-y: auto !important;
+    max-height: 70% !Important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--classic .select2-selection--single,
+.select2-container--classic.select2-container--open .select2-selection--single, .select2-container--classic .select2-selection--multiple:focus,
+.select2-container--classic.select2-container--open .select2-selection--multiple, .select2-container--classic.select2-container--open .select2-dropdown {
+    background-color: #1a3968 !Important;
+}
+
+@media screen and (max-width: 768px) {
+    h3{
+        text-align: center !Important;
+    }
+    #totalLateral {
+        text-align: center !Important;
+    }
+
+    .btn-rollback{
+        float: none !Important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    #totalLateral {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100%;
+        background: white;
+        border-left: 1px solid #cdcdcd;
+        box-sizing: border-box;
+    }
+
+    #totalLateral h3 {
+        color: white;
+    }
+
+
+    .btn-rollback {
+        width: 90%;
+        position: absolute;
+        bottom: 5px;
+    }
+}
+
+.invalid-feedback {
+    display: block !important;
+}
+
+.select2-selection {
+    display: block !important;
+    width: 100% !important;
+    height: calc(1.5em + 0.75rem + 2px) !important;
+    padding: .375rem .75rem !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #ced4da !important;
+    border-radius: .25rem !important;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
+}
+
+
+.is-invalid .select2-selection {
+    border: 1px solid red !Important;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.nav-item:first-of-type {
+    border: 0 !Important;
+}
+
+.money {
+    font-weight: bolder;
+}

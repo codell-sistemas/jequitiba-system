@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['domain' => 'localhost'], function () {
+Route::group(['domain' => Request::getHost()], function () {
 
 
     Route::get('/login', 'LoginController@login')->name('login');
@@ -72,17 +72,4 @@ Route::group(['domain' => 'localhost'], function () {
 
 
     });
-});
-
-/*
- * ASSOCIADO
- */
-
-Route::group(['domain' => 'associado.abcpaint.com.br'], function () {
-    Route::get('/login', 'Associado\LoginController@login')->name('associado.login');
-    Route::get('/logar', 'Associado\LoginController@logar')->name('associado.logar');
-    Route::get('/logout', 'Associado\LoginController@logout')->name('associado.logout');
-
-    Route::get('/', 'Associado\AssociadoController@index')->name('associado.dashboard');
-    Route::post('/senha', 'Associado\AssociadoController@senha')->name('associado.senha');
 });

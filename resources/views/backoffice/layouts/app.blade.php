@@ -13,7 +13,7 @@
           href="http://abcpaint.com.br/wp-content/uploads/2020/08/cropped-Logotipo_ABCPaint_300x300-1-2-32x32.jpg"
           sizes="32x32"/>
 
-    <title>ABCPaint - Área Administrativa | @yield('title')</title>
+    <title>Jequitiba Comunicação - Área Administrativa | @yield('title')</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/"/>
     <link href="/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="/dist/js/pages/chartist/chartist-init.css" rel="stylesheet">

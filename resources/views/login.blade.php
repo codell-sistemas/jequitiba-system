@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" href="http://abcpaint.com.br/wp-content/uploads/2020/08/cropped-Logotipo_ABCPaint_300x300-1-2-32x32.jpg" sizes="32x32" />
-    <title>Jequitiba Comunicação Estratégica - Portal do Administrador</title>
+    <title>Jequitiba Comunicação - Área Administrativa</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monsteradmin/"/>
     <!-- Custom CSS -->
     <link href="/dist/css/style.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
         <div class="auth-box on-sidebar p-4 bg-white m-0" style="top:15% !Important;right: auto !Important; border:1px solid #cdcdcd; height:65% !important;">
             <div id="loginform">
                 <div class="logo text-center">
-                        <span class="db" style="font-size:40px;width: 300px;"><img src="http://abcpaint.com.br/wp-content/uploads/2020/06/cropped-Logotipo_ABCPaint_300x300-1.jpg"/></span>
+                        <span class="db" style="font-size:40px;width: 300px;"><img src="/img/logo.png"/></span>
                 </div>
                 <!-- Form -->
                 <div class="row">
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         </div><br/><br/>
-                        <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light">
+                        <button class="btn btn-danger btn-lg btn-block text-uppercase waves-effect waves-light" style="background:#681013;border-color:#681013;">
                             Entrar
                         </button>
                         {!! Form::close() !!}

@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.app')
 @section('title', 'Fluxo de Caixa')
-@section('menu','Lançamentos')
+@section('menu','Fluxo de Caixa')
 @section('content')
 
     <div class="card">

@@ -19,6 +19,7 @@
     <link href="/dist/js/pages/chartist/chartist-init.css" rel="stylesheet">
     <link href="/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <link href="/assets/libs/c3/c3.min.css" rel="stylesheet">
+    <link href="/css/jquery-datepicker.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/dist/css/style.min.css" rel="stylesheet">
     <link href="/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -211,6 +212,9 @@
 <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="/assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="/assets/libs/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+<script type="text/javascript" src="/js/jquery.datepicker.js"></script>
+<script type="text/javascript" src="/js/jquery.datepicker-lang.js"></script>
 <script src="/js/select2.min.js"></script>
 
 <link rel="stylesheet" href="/css/select2.css"/>

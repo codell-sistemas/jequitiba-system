@@ -109,7 +109,11 @@ class Geral
 
     public static function moneyFormat($str)
     {
+        if(!$str)
+            $str = 0;
+
         return number_format($str / 100, 2, ",", ".");
+
     }
 
     public static function requestOld($request, $field, $id)
@@ -123,7 +127,11 @@ class Geral
 
     public static function dateInput($date)
     {
-        return \DateTime::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y');
+        $obj = \DateTime::createFromFormat('Y-m-d H:i:s', $date);
+        if($obj) {
+            return $obj->format('d/m/Y');
+        }
+        return null;
     }
 
     /*

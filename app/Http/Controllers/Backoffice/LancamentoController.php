@@ -19,7 +19,17 @@ class LancamentoController extends Controller
     public function index()
     {
 
-        $lancamentos = Lancamento::all();
+        $lancamentos = new Lancamento();
+        if ((int)request()->get('id_categoria')) {
+            $lancamentos = $lancamentos->where('id_categoria', request()->get('id_categoria'));
+        }
+        if (request()->get('data')) {
+            $lancamentos = $lancamentos->where('data_vencimento', Geral::dateInput(request()->get('data')));
+        }
+        if (request()->get('descricaao')) {
+            $lancamentos = $lancamentos->where('nome', 'like', '%' . request()->get('descricao') . '%');
+        }
+        $lancamentos = $lancamentos->orderBy('data_vencimento','DESC')->get();
 
         return view('backoffice.lancamento.index')->with([
             'lancamentos' => $lancamentos
@@ -28,7 +38,6 @@ class LancamentoController extends Controller
 
     public function create()
     {
-
         return view('backoffice.lancamento.create')->with([
 
         ]);
@@ -54,7 +63,7 @@ class LancamentoController extends Controller
         $Lancamento->baixa = $lancamentoRequest->get('baixa') ? 1 : 0;
         $Lancamento->save();
 
-        Geral::setMessage('Lancamento cadastrada com sucesso.', 'success');
+        Geral::setMessage('Lançamento cadastrado com sucesso.', 'success');
         return redirect()->route('lancamento.index');
     }
 
@@ -77,57 +86,8 @@ class LancamentoController extends Controller
         $Lancamento = Lancamento::find($id);
         $Lancamento->delete();
 
-        Geral::setMessage('Lancamento excluída com sucesso.', 'success');
+        Geral::setMessage('Lançamento excluído com sucesso.', 'success');
         return redirect()->route('lancamento.index');
-    }
-
-    /*
-     * DataTable
-     */
-
-    public function data()
-    {
-        $data = Lancamento::latest()->get();
-        return \DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('categoria', function ($row) {
-                $Categoria = Categoria::find($row->id_categoria);
-                if ($Categoria) {
-                    if ($Categoria->tipo == 'receita') {
-                        return '<span class="badge badge-primary">' . $Categoria->nome . '</span>';
-                    } else {
-                        return '<span class="badge badge-danger">' . $Categoria->nome . '</span>';
-                    }
-                }
-            })
-            ->addColumn('data_vencimento', function ($row) {
-                return Geral::dateInput($row->data_vencimento);
-            })
-            ->addColumn('baixa', function ($row) {
-                if ($row->baixa) {
-                    return 'Sim';
-                } else {
-                    return 'Não';
-                }
-            })
-            ->addColumn('valor', function ($row) {
-                return Geral::moneyFormat($row->valor);
-            })
-            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('lancamento.edit', ['id' => $row->id]) . '" class="btn btn-info btn-md my-0 waves-effect waves-light">
-	                           EDITAR
-                        </a>
-                        <a href="javascript:void(0);" class="btn btn-danger btn-md my-0 waves-effect waves-light remover" data-url="' . route('lancamento.delete', $row->id) . '" title="Delete">
-                               EXCLUIR                
-                        </a>';
-
-
-                return $btn;
-            })
-            ->rawColumns(['categoria', 'data_vencimento', 'baixa', 'action'])
-            ->make(true);
-
     }
 
 }

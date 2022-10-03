@@ -13,13 +13,14 @@ class Categoria extends Model
         'nome', 'tipo'
     ];
 
-    public function valorLancamentos($date)
+    public function valorLancamentos($date,$baixa=0)
     {
         $data = explode('/', $date);
         $mes = $data[0];
         $ano = $data[1];
 
         $valor = Lancamento::where('id_categoria', $this->id)
+            ->where('baixa',$baixa)
             ->where(\DB::raw('MONTH(data_vencimento)'), $mes)
             ->where(\DB::raw('YEAR(data_vencimento)'), $ano)
             ->sum('valor');
@@ -27,7 +28,7 @@ class Categoria extends Model
         return Geral::moneyFormat($valor);
     }
 
-    public static function totalLancamentos($tipo,$date,$moneyFormat=1){
+    public static function totalLancamentos($tipo,$date,$baixa,$moneyFormat=1){
         $data = explode('/', $date);
         $mes = $data[0];
         $ano = $data[1];
@@ -36,6 +37,7 @@ class Categoria extends Model
             ->where('categoria.tipo',$tipo)
             ->where(\DB::raw('MONTH(lancamento.data_vencimento)'), $mes)
             ->where(\DB::raw('YEAR(lancamento.data_vencimento)'), $ano)
+            ->where('baixa',$baixa)
             ->groupBy('lancamento.id')
             ->sum('valor');
 

@@ -18,14 +18,19 @@ class FluxoController extends Controller
 
     public function index()
     {
-        $lancamentos = Lancamento::all();
-
         $despesas = Categoria::where('tipo', 'despesa')->get();
         $receitas = Categoria::where('tipo', 'receita')->get();
 
+        $tipo_lancamento = request()->get('tipo_lancamento','previsto');
+        $ano = request()->get('ano',date('Y'));
+        $baixa = ($tipo_lancamento == 'previsto' ? 0 : 1);
+
         return view('backoffice.fluxo.index')->with([
             'despesas' => $despesas,
-            'receitas' => $receitas
+            'receitas' => $receitas,
+            'tipo_lancamento' => $tipo_lancamento,
+            'ano' => $ano,
+            'baixa' => $baixa
         ]);
     }
 

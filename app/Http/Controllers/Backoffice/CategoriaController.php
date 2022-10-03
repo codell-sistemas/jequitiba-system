@@ -81,19 +81,9 @@ class CategoriaController extends Controller
 
     public function data()
     {
-        $data = Categoria::latest()->get();
+        $data = Categoria::where('tipo',request()->get('tipo'))->latest()->get();
         return \DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('tipo', function ($row) {
-                switch ($row->tipo) {
-                    case 'despesa':
-                        return '<span class="badge badge-danger">Despesa</span>';
-                        break;
-                    case 'receita':
-                        return '<span class="badge badge-primary">Receita</span>';
-                        break;
-                }
-            })
             ->addColumn('action', function ($row) {
 
                 $btn = '<a href="' . route('categoria.edit', ['id' => $row->id]) . '" class="btn btn-info btn-md my-0 waves-effect waves-light">

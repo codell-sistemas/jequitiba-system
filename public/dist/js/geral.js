@@ -71,6 +71,11 @@ $(function () {
     $('.money').mask('#.##0,00', {reverse: true});
     $('.date').mask('99/99/9999');
 
+    $('.date').datepicker({
+        format: "dd/mm/yyyy",
+        language: "pt-BR"
+    });
+
     $('.timeabc').mask('00:00:000');
     $('.nota').mask('#.00', {reverse: true});
 

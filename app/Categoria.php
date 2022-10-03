@@ -33,13 +33,20 @@ class Categoria extends Model
         $mes = $data[0];
         $ano = $data[1];
 
-        $valor = Lancamento::join('categoria','categoria.id','=','lancamento.id_categoria')
+        $valores = Lancamento::select('lancamento.valor')->join('categoria','categoria.id','=','lancamento.id_categoria')
             ->where('categoria.tipo',$tipo)
             ->where(\DB::raw('MONTH(lancamento.data_vencimento)'), $mes)
             ->where(\DB::raw('YEAR(lancamento.data_vencimento)'), $ano)
             ->where('baixa',$baixa)
             ->groupBy('lancamento.id')
-            ->sum('valor');
+            ->get();
+
+        $valor = 0;
+        if(count($valores)){
+            foreach($valores as $valor_sum){
+                $valor+= $valor_sum['valor'];
+            }
+        }
 
         if($moneyFormat) {
             return Geral::moneyFormat($valor);

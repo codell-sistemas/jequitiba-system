@@ -38,7 +38,11 @@
                         } ?>
                     </select>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-2">
+                    Baixa ?
+                    {!! Form::select('baixa',[''=>'--',-1=>'Não',1=>'Sim'],request()->get('baixa'),['class'=>'form-control']) !!}
+                </div>
+                <div class="col-sm-4">
                     Descrição/Nome
                     {!! Form::text('descricao',request()->get('descricao'),['class'=>'form-control']) !!}
                 </div>

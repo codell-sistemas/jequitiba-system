@@ -26,10 +26,14 @@ class LancamentoController extends Controller
         if (request()->get('data')) {
             $lancamentos = $lancamentos->where('data_vencimento', Geral::dateInput(request()->get('data')));
         }
+        if (request()->get('baixa') == -1 || request()->get('baixa') == 1) {
+            $baixa = request()->get('baixa') == -1 ? 0 : 1;
+            $lancamentos = $lancamentos->where('baixa', $baixa);
+        }
         if (request()->get('descricaao')) {
             $lancamentos = $lancamentos->where('nome', 'like', '%' . request()->get('descricao') . '%');
         }
-        $lancamentos = $lancamentos->orderBy('data_vencimento','DESC')->get();
+        $lancamentos = $lancamentos->orderBy('data_vencimento', 'DESC')->get();
 
         return view('backoffice.lancamento.index')->with([
             'lancamentos' => $lancamentos

@@ -30,7 +30,7 @@ class LancamentoController extends Controller
             $baixa = request()->get('baixa') == -1 ? 0 : 1;
             $lancamentos = $lancamentos->where('baixa', $baixa);
         }
-        if (request()->get('descricaao')) {
+        if (request()->get('descricao')) {
             $lancamentos = $lancamentos->where('nome', 'like', '%' . request()->get('descricao') . '%');
         }
         $lancamentos = $lancamentos->orderBy('data_vencimento', 'DESC')->paginate(50);

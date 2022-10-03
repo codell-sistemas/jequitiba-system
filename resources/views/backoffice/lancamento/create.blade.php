@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label class="form-control-label">Categoria</label>
                 <select name="id_categoria" class="form-control">
-                    <option vale="">Selecione</option>
+                    <option value="">Selecione</option>
                     <?php
                     $receitas = \App\Categoria::where('tipo','receita')->orderBy('nome')->get();
                     if(count($receitas)){

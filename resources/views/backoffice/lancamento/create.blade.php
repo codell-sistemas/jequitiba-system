@@ -20,62 +20,80 @@
                 <label class="form-control-label">Nome</label>
                 {!!Form::text('nome',null,['class'=>"form-control ".($errors->has('nome') ? 'is-invalid' : '')]) !!}
                 @if ($errors->has('nome'))
-                    <div class="invalid-feedback">{{ $errors->first('nome') }}</div>@endif
+                    <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
+                @endif
             </div>
             <!--Nome-->
 
             <!-- Categoira-->
             <div class="form-group">
                 <label class="form-control-label">Categoria</label>
-                <select name="id_categoria" class="form-control">
+                <select name="id_categoria" class="form-control" style="width:350px;">
                     <option value="">Selecione</option>
                     <?php
-                    $receitas = \App\Categoria::where('tipo','receita')->orderBy('nome')->get();
-                    if(count($receitas)){
-                        foreach($receitas as $Receita){
-                            ?>
-                        <option value="{{$Receita->id}}" style="background:#1b3b6a;color:white;">{{$Receita->nome}}</option>
-                    <?php
-                        }
+                    $receitas = \App\Categoria::where('tipo', 'receita')->orderBy('nome')->get();
+                    if (count($receitas)){
+                    foreach ($receitas as $Receita){
+                        ?>
+                    <option value="{{$Receita->id}}" style="background:#1b3b6a;color:white;">{{$Receita->nome}}</option>
+                        <?php
                     }
-                    $despesas = \App\Categoria::where('tipo','despesa')->orderBy('nome')->get();
-                    if(count($despesas)){
-                    foreach($despesas as $Despesa){
-                    ?>
+                    }
+                    $despesas = \App\Categoria::where('tipo', 'despesa')->orderBy('nome')->get();
+                    if (count($despesas)){
+                    foreach ($despesas as $Despesa){
+                        ?>
                     <option value="{{$Despesa->id}}" style="background:#fc4b6c;color:white;">{{$Despesa->nome}}</option>
-                    <?php
+                        <?php
                     }
                     } ?>
                 </select>
                 @if ($errors->has('id_categoria'))
-                    <div class="invalid-feedback">{{ $errors->first('id_categoria') }}</div>@endif
+                    <div class="invalid-feedback">{{ $errors->first('id_categoria') }}</div>
+                @endif
             </div>
             <!-- Categoria -->
 
             <!--Valor-->
             <div class="form-group">
                 <label class="form-control-label">Valor</label>
-                {!! Form::text('valor',null,['class'=>"money form-control ".($errors->has('nome') ? 'is-invalid' : '')]) !!}
+                {!! Form::text('valor',null,['style'=>'width:200px','class'=>"money form-control ".($errors->has('nome') ? 'is-invalid' : '')]) !!}
                 @if ($errors->has('valor'))
-                    <div class="invalid-feedback">{{ $errors->first('valor') }}</div>@endif
+                    <div class="invalid-feedback">{{ $errors->first('valor') }}</div>
+                @endif
             </div>
             <!--Valor-->
 
             <!--Data vencimento-->
             <div class="form-group">
                 <label class="form-control-label">Data vencimento</label>
-                {!! Form::text('data_vencimento',null,['class'=>"date form-control ".($errors->has('data_vencimento') ? 'is-invalid' : '')]) !!}
+                {!! Form::text('data_vencimento',null,['style'=>'width:150px;','class'=>"date form-control ".($errors->has('data_vencimento') ? 'is-invalid' : '')]) !!}
                 @if ($errors->has('data_vencimento'))
-                    <div class="invalid-feedback">{{ $errors->first('data_vencimento') }}</div>@endif
+                    <div class="invalid-feedback">{{ $errors->first('data_vencimento') }}</div>
+                @endif
             </div>
             <!--Data vencimento-->
+
+            <!--Repetir-->
+            <div class="form-group">
+                <label class="form-control-label" for="repetir">Repetir</label>
+                {!! Form::checkbox('repetir',1,null,['id'=>'repetir']) !!}
+                <div id="div-repetir" class="row" style="{{request()->old('repetir') ? '' :'display: none;'}}">
+                    <div class="col-sm-1">
+                        {!! Form::number('repetir_vezes',null,['min'=>1,'class'=>'form-control '.($errors->has('repetir_vezes') ? 'is-invalid' : '')]) !!}
+                    </div>
+                    <strong class="col-sm-3" style="padding-top:7px">vezes</strong>
+                </div>
+            </div>
+            <!--Repetir-->
 
             <!-- Baixa -->
             <div class="form-group">
                 <label class="form-control-label" for="baixa">Baixa</label>
                 {!! Form::checkbox('baixa',1,null) !!}
                 @if ($errors->has('baixa'))
-                    <div class="invalid-feedback">{{ $errors->first('baixa') }}</div>@endif
+                    <div class="invalid-feedback">{{ $errors->first('baixa') }}</div>
+                @endif
             </div>
 
             <!-- Form submit -->
@@ -92,4 +110,14 @@
         </div>
     </div>
     {!! Form::close() !!}
+@endsection
+
+@section('scripts')
+    <script>
+        $(function(){
+           $('#repetir').click(function(){
+             $('#div-repetir').toggle();
+           });
+        });
+    </script>
 @endsection

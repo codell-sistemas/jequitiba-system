@@ -23,17 +23,24 @@ class LancamentoRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'nome' => 'required',
             'id_categoria' => 'required',
             'valor' => 'required',
             'data_vencimento' => 'required|date_format:d/m/Y',
         ];
+
+        if ($this->request->get('repetir')) {
+            $rules['repetir_vezes'] = 'required|numeric';
+        }
+
+        return $rules;
     }
 
     public function messages()
     {
         return [
+            'repetir_vezes.required' => 'O campo quantidade de repetições é obrigatório.',
             'id_categoria.required' => 'O campo categoria é obrigatório.'
         ];
     }

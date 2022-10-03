@@ -67,6 +67,24 @@ class LancamentoController extends Controller
         $Lancamento->baixa = $lancamentoRequest->get('baixa') ? 1 : 0;
         $Lancamento->save();
 
+        if($lancamentoRequest->get('repetir')){
+            $dataRepetir = \DateTime::createFromFormat('d/m/Y', $lancamentoRequest->get('data_vencimento'));
+            for($i=2;$i<=$lancamentoRequest->get('repetir_vezes');$i++){
+                $dataRepetir->modify('+1 month');
+
+                $Repetir = new Lancamento();
+                $Repetir->nome = $Lancamento->nome.' '.$i.'/'.$lancamentoRequest->get('repetir_vezes');
+                $Repetir->id_categoria = $Lancamento->id_categoria;
+                $Repetir->data_vencimento = $dataRepetir->format('Y-m-d H:i:s');
+                $Repetir->valor = $Lancamento->valor;
+                $Repetir->baixa = 0;
+                $Repetir->save();
+            }
+
+            $Lancamento->nome = $Lancamento->nome.' 1/'.$lancamentoRequest->get('repetir_vezes');
+            $Lancamento->update();
+        }
+
         Geral::setMessage('Lançamento cadastrado com sucesso.', 'success');
         return redirect()->route('lancamento.index');
     }

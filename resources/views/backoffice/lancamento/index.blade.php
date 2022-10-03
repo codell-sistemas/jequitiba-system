@@ -78,7 +78,7 @@
                     if (count($lancamentos)){
                     foreach ($lancamentos as $Lancamento){
                         $Categoria = \App\Categoria::find($Lancamento->id_categoria);
-                        $total += $Lancamento->valor;
+                        $total += $Categoria->tipo == 'receita' ? $Lancamento->valor : $Lancamento->valor*(-1);
                         ?>
                     <tr>
                         <td>{{$Lancamento->nome}}</td>

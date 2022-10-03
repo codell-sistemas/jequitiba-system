@@ -24,10 +24,17 @@ class LancamentoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome'=>'required',
-            'id_categoria'=>'required',
-            'valor'=>'required',
-            'data_vencimento'=>'required|date_format:d/m/Y',
+            'nome' => 'required',
+            'id_categoria' => 'required',
+            'valor' => 'required',
+            'data_vencimento' => 'required|date_format:d/m/Y',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'id_categoria.required' => 'O campo categoria é obrigatório.'
         ];
     }
 }

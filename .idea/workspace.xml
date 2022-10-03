@@ -24,16 +24,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bbcc2f46-47bf-430b-8c46-148fb8d81790" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Categoria.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Categoria.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backoffice/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backoffice/CategoriaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backoffice/FluxoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backoffice/FluxoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backoffice/LancamentoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backoffice/LancamentoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Custom/Geral.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Custom/Geral.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dist/js/geral.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/geral.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backoffice/categoria/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backoffice/categoria/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backoffice/fluxo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backoffice/fluxo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/css/style.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/backoffice/lancamento/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backoffice/lancamento/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backoffice/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backoffice/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +307,7 @@
       <workItem from="1631700562842" duration="1218000" />
       <workItem from="1631701883168" duration="2012000" />
       <workItem from="1631704331175" duration="4645000" />
-      <workItem from="1664564577985" duration="9155000" />
+      <workItem from="1664564577985" duration="11098000" />
     </task>
     <servers />
   </component>

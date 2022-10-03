@@ -60,7 +60,7 @@
             <h4 class="card-title">Lançamentos</h4>
             <h6 class="card-subtitle">Listagem de lançamentos cadastrados</h6>
 
-            <div class="">
+            <div class="table-lancamentos">
                 <table class="table table-striped table-bordered dataTable">
                     <thead>
                     <tr>
@@ -119,7 +119,14 @@
                     </td>
                     </tfoot>
                 </table>
+
+                {!! $lancamentos->links() !!}
             </div>
         </div>
     </div>
+    <style>
+        .table-lancamentos nav{
+            text-align: center !Important;
+        }
+    </style>
 @endsection

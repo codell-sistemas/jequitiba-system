@@ -33,7 +33,7 @@ class LancamentoController extends Controller
         if (request()->get('descricaao')) {
             $lancamentos = $lancamentos->where('nome', 'like', '%' . request()->get('descricao') . '%');
         }
-        $lancamentos = $lancamentos->orderBy('data_vencimento', 'DESC')->get();
+        $lancamentos = $lancamentos->orderBy('data_vencimento', 'DESC')->paginate(50);
 
         return view('backoffice.lancamento.index')->with([
             'lancamentos' => $lancamentos

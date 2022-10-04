@@ -58,6 +58,7 @@
                     $total = 0;
                     if (count($categorias)){
                     foreach ($categorias as $Categoria){
+                    if (count($Categoria->lancamentos)){
                         $lancamentos = $Categoria->lancamentos();
                         if ($tipo_lancamento == 'previsto') {
                             $lancamentos = $lancamentos->where('baixa', 0);
@@ -78,14 +79,18 @@
                     <tr>
                         <td>{{$Lancamento->nome}}</td>
                         <td>R$ {{\App\Http\Custom\Geral::moneyFormat($Lancamento->valor)}}
-                        <?php if($Lancamento->baixa){ ?>
+                                <?php if ($Lancamento->baixa){ ?>
                             <i class="fa fa-check" style="color:green" title="Baixa"></i>
                             <?php }else{ ?>
                             <i class="fa fa-clock" style="color:darkslategray" title="Previsto"></i>
                             <?php } ?>
                         </td>
                     </tr>
-                    <?php }  }  }  } ?>
+                    <?php }
+                    }
+                    }
+                    }
+                    } ?>
                     <tr style="background: rgba(0, 0, 0, .05);">
                         <th><strong>TOTAL</strong></th>
                         <th>R$ {{\App\Http\Custom\Geral::moneyFormat($total)}}</th>

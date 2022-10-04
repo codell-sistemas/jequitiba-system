@@ -85,14 +85,11 @@
                             <?php } ?>
                         </td>
                     </tr>
-                    <?php }
-                    } ?>
+                    <?php }  }  }  } ?>
                     <tr style="background: rgba(0, 0, 0, .05);">
                         <th><strong>TOTAL</strong></th>
                         <th>R$ {{\App\Http\Custom\Geral::moneyFormat($total)}}</th>
                     </tr>
-                    <?php }
-                    } ?>
                 </table>
             </div>
         </div>

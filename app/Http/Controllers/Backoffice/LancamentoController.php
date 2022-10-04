@@ -116,13 +116,15 @@ class LancamentoController extends Controller
     public function grid(Request $request, $tipo)
     {
         $ano = $request->get('ano', date('Y'));
+        $tipo_lancamento = $request->get('tipo_lancamento','previsto');
 
         $categorias = Categoria::where('tipo', $tipo)->orderBy('nome')->get();
 
         return view('backoffice.lancamento.grid')->with([
             'tipo' => $tipo,
             'ano' => $ano,
-            'categorias' => $categorias
+            'categorias' => $categorias,
+            'tipo_lancamento'=>$tipo_lancamento
         ]);
     }
 

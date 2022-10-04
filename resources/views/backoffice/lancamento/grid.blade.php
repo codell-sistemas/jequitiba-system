@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-sm-3">
                     Tipo
-                    {!! Form::select('tipo',['previsto'=>'Previsto','baixa'=>'Baixa'],$tipo,['class'=>'form-control']) !!}
+                    {!! Form::select('tipo_lancamento',['previsto'=>'Previsto','baixa'=>'Baixa'],$tipo_lancamento,['class'=>'form-control']) !!}
                 </div>
                 <div class="col-sm-3">
                     Período
@@ -58,7 +58,13 @@
                     $total = 0;
                     if (count($categorias)){
                     foreach ($categorias as $Categoria){
-                        $lancamentos = $Categoria->lancamentos()->where(DB::raw('YEAR(data_vencimento)'), $ano)->get();
+                        $lancamentos = $Categoria->lancamentos();
+                        if ($tipo_lancamento == 'previsto') {
+                            $lancamentos = $lancamentos->where('baixa', 0);
+                        } else {
+                            $lancamentos = $lancamentos->where('baixa', 1);
+                        }
+                        $lancamentos = $lancamentos->where(DB::raw('YEAR(data_vencimento)'), $ano)->get();
                         ?>
                     <tr style="background: rgba(0, 0, 0, .05);">
                         <th colspan="2" style="text-align: left;">
@@ -71,7 +77,13 @@
                         ?>
                     <tr>
                         <td>{{$Lancamento->nome}}</td>
-                        <td>R$ {{\App\Http\Custom\Geral::moneyFormat($Lancamento->valor)}}</td>
+                        <td>R$ {{\App\Http\Custom\Geral::moneyFormat($Lancamento->valor)}}
+                        <?php if($Lancamento->baixa){ ?>
+                            <i class="fa fa-check" style="color:green" title="Baixa"></i>
+                            <?php }else{ ?>
+                            <i class="fa fa-clock" style="color:darkslategray" title="Previsto"></i>
+                            <?php } ?>
+                        </td>
                     </tr>
                     <?php }
                     } ?>

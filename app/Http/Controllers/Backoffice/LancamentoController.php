@@ -8,6 +8,7 @@ use App\Lancamento;
 use App\Http\Controllers\Controller;
 use App\Http\Custom\Geral;
 use App\Http\Requests\LancamentoRequest;
+use Illuminate\Http\Request;
 
 class LancamentoController extends Controller
 {
@@ -67,13 +68,13 @@ class LancamentoController extends Controller
         $Lancamento->baixa = $lancamentoRequest->get('baixa') ? 1 : 0;
         $Lancamento->save();
 
-        if($lancamentoRequest->get('repetir')){
+        if ($lancamentoRequest->get('repetir')) {
             $dataRepetir = \DateTime::createFromFormat('d/m/Y', $lancamentoRequest->get('data_vencimento'));
-            for($i=2;$i<=$lancamentoRequest->get('repetir_vezes');$i++){
+            for ($i = 2; $i <= $lancamentoRequest->get('repetir_vezes'); $i++) {
                 $dataRepetir->modify('+1 month');
 
                 $Repetir = new Lancamento();
-                $Repetir->nome = $Lancamento->nome.' '.$i.'/'.$lancamentoRequest->get('repetir_vezes');
+                $Repetir->nome = $Lancamento->nome . ' ' . $i . '/' . $lancamentoRequest->get('repetir_vezes');
                 $Repetir->id_categoria = $Lancamento->id_categoria;
                 $Repetir->data_vencimento = $dataRepetir->format('Y-m-d H:i:s');
                 $Repetir->valor = $Lancamento->valor;
@@ -81,7 +82,7 @@ class LancamentoController extends Controller
                 $Repetir->save();
             }
 
-            $Lancamento->nome = $Lancamento->nome.' 1/'.$lancamentoRequest->get('repetir_vezes');
+            $Lancamento->nome = $Lancamento->nome . ' 1/' . $lancamentoRequest->get('repetir_vezes');
             $Lancamento->update();
         }
 
@@ -110,6 +111,19 @@ class LancamentoController extends Controller
 
         Geral::setMessage('Lançamento excluído com sucesso.', 'success');
         return redirect()->route('lancamento.index');
+    }
+
+    public function grid(Request $request, $tipo)
+    {
+        $ano = $request->get('ano', date('Y'));
+
+        $categorias = Categoria::where('tipo', $tipo)->orderBy('nome')->get();
+
+        return view('backoffice.lancamento.grid')->with([
+            'tipo' => $tipo,
+            'ano' => $ano,
+            'categorias' => $categorias
+        ]);
     }
 
 }

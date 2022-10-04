@@ -54,6 +54,7 @@ Route::group(['domain' => Request::getHost()], function () {
         Route::get('/lancamento/{id}/delete', 'Backoffice\LancamentoController@delete')->name('lancamento.delete')->middleware('auth');
         Route::post('/lancamento/{id}/update', 'Backoffice\LancamentoController@update')->name('lancamento.update')->middleware('auth');
         Route::get('/lancamento/data', 'Backoffice\LancamentoController@data')->name('lancamento.data')->middleware('auth');
+        Route::get('/lancamento/{tipo}/grid/','Backoffice\LancamentoController@grid')->name('lancamento.grid')->middleware('auth');
 
         //Fluxo Caixa
 

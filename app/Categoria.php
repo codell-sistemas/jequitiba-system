@@ -13,6 +13,10 @@ class Categoria extends Model
         'nome', 'tipo'
     ];
 
+    public function lancamentos(){
+        return $this->hasMany(Lancamento::class,'id_categoria');
+    }
+
     public function valorLancamentos($date,$baixa=0)
     {
         $data = explode('/', $date);

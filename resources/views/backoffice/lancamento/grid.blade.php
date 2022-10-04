@@ -38,7 +38,7 @@
 
     <div class="card">
         <div class="card-body">
-
+            <a href="{{route('lancamento.create')}}" class="btn btn-info float-right">NOVO LANÇAMENTO</a><br/><br/>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link {{$tipo == 'receita' ? 'active' : ''}}" id="receitas-tab"

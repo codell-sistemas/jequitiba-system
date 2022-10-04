@@ -25,6 +25,7 @@
     <list default="true" id="bbcc2f46-47bf-430b-8c46-148fb8d81790" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/backoffice/lancamento/grid.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backoffice/lancamento/grid.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backoffice/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backoffice/layouts/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +307,7 @@
       <workItem from="1631701883168" duration="2012000" />
       <workItem from="1631704331175" duration="4645000" />
       <workItem from="1664564577985" duration="11817000" />
-      <workItem from="1664818693022" duration="4996000" />
+      <workItem from="1664818693022" duration="5663000" />
     </task>
     <servers />
   </component>

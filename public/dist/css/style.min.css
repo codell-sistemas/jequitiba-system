@@ -24217,6 +24217,11 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     margin-bottom: 0
 }
 
+
+.nav-small-cap > .hide-menu{
+    color: #1b3b6a;
+}
+
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;

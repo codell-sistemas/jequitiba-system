@@ -5,7 +5,7 @@ namespace App;
 use App\Http\Custom\Geral;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Categoria extends Elegant
 {
     protected $table = 'categoria';
 

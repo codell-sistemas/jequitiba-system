@@ -72,5 +72,10 @@ Route::group(['domain' => Request::getHost()], function () {
         Route::post('/usuario/save', 'Backoffice\UsuarioController@save')->name('usuario.save')->middleware('auth');
 
 
+        /*
+         * LOGS
+         */
+        Route::get('/auditoria','Backoffice\LogsController@index')->name('logs.index')->middleware('auth');
+
     });
 });

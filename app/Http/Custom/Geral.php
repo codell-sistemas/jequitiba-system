@@ -109,7 +109,7 @@ class Geral
 
     public static function moneyFormat($str)
     {
-        if(!$str)
+        if (!$str)
             $str = 0;
 
         return number_format($str / 100, 2, ",", ".");
@@ -128,10 +128,39 @@ class Geral
     public static function dateInput($date)
     {
         $obj = \DateTime::createFromFormat('Y-m-d H:i:s', $date);
-        if($obj) {
+        if ($obj) {
             return $obj->format('d/m/Y');
         }
         return null;
+    }
+
+    public static function timeago($date, $granularity = 2)
+    {
+        $timestamp = \DateTime::createFromFormat('Y-m-d H:i:s', $date)->getTimestamp();
+        $timestamp = time() - $timestamp;
+        $units = array('1 ano|%d anos' => 31536000,
+            '1 semana|%d semanas' => 604800,
+            '1 dia|%d dias' => 86400,
+            '1 hora|%d horas' => 3600,
+            '1 min|%d mins' => 60,
+            '1 seg|%d segs' => 1
+        );
+        $output = '';
+        foreach ($units as $key => $value) {
+            $key = explode('|', $key);
+            if ($timestamp >= $value) {
+                $pluralized = floor($timestamp / $value) > 1 ?
+                    sprintf($key[1], floor($timestamp / $value)) :
+                    $key[0];
+                $output .= ($output ? ' ' : '') . $pluralized;
+                $timestamp %= $value;
+                $granularity--;
+            }
+            if ($granularity == 0) {
+                break;
+            }
+        }
+        return $output ? $output : "Agora";
     }
 
     /*
